@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import { handleCategories } from '../actions/posts'
 import Menu from "./Menu";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Dashboard from "./Dashboard";
@@ -15,6 +16,7 @@ class App extends Component {
   componentDidMount() {
     console.log(this.props)
    this.props.dispatch(handleInitialData());
+   this.props.dispatch( handleCategories());
     console.log(this.props); 
   }
 
