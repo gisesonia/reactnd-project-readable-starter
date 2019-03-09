@@ -14,19 +14,19 @@ export function receivePosts(posts) {
   };
 }
 
- export function handleCategories() {
+export function handleCategories() {
   return dispatch => {
-    return getCategories().then(categories => console.log(categories));
+    return getCategories().then(categories =>  dispatch(receiveCategories(categories)));
   };
-}
+} 
 
-/*
+
 function receiveCategories(category) {
   return {
     type: RECEIVE_CATEGORIES,
     category
   };
-} */
+} 
 
 export const addPost = ({ timestamp, title, body, author, category }) => ({
   type: ADD_POST,
