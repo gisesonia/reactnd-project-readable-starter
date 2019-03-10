@@ -1,33 +1,39 @@
-import axios from "axios";
+import axios from 'axios';
 
-axios.defaults.headers.common["Authorization"] = "qualquer_coisa";
+// ajuda para entender request do axios mentor Eric Gruby
 
-const API_URL = "http://localhost:3001";
+axios.defaults.headers.common['Authorization'] = 'qualquer_coisa';
+
+const headers = {
+  Accept: 'application/json',
+  'Content-Type': 'application/json',
+  Authorization: 'qualquer_coisa',
+};
+
+const API_URL = 'http://localhost:3001';
 
 const getPosts = () =>
   axios({
-    url: API_URL + "/posts",
-    method: "GET"
+    url: API_URL + '/posts',
+    method: 'GET',
   }).then(response => {
     return response.data;
-    //console.log(response.data)
   });
 
-  export const getCategories = () =>
-  axios({
-    url: API_URL + "/categories",
-    method: "GET"
-  }).then(response => {
-    return response.categories
-    console.log(response.categories)
-  });
+  export const fetchCategories = () =>
+    axios({
+      url: API_URL + '/categories',
+      method: 'GET',
+    }).then(response => {
+      return response.data;
+    });
 
- 
+
 
 export const APIaddposts = post =>
   axios({
-    url: API_URL + "/posts",
-    method: "POST"
+    url: API_URL + '/posts',
+    method: 'POST',
   }).then(response => {
     return response.data;
   });
