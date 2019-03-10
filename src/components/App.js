@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import { handleCategories } from '../actions/posts'
+import { handleCategories } from '../actions/category';
 import Menu from "./Menu";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Dashboard from "./Dashboard";
@@ -14,10 +14,8 @@ import PostCategory from "../components/PostCategory";
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props)
-   this.props.dispatch(handleInitialData());
-   this.props.dispatch( handleCategories());
-    console.log(this.props); 
+    this.props.getInitialData();
+    this.props.getCategories();
   }
 
   render() {
@@ -42,6 +40,18 @@ class App extends Component {
   }
 }
 
-export default connect(state => ({
-  loading: state.loading
-}))(App);
+const mapStateToProps = ({ loading, categories }) => {
+  console.log(categories);
+  return { loading, categories };
+};
+
+const mapDispatchToProps = dispatch => ({
+  getCategories() {
+    dispatch(handleCategories());
+  },
+  getInitialData() {
+    dispatch(handleInitialData());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
