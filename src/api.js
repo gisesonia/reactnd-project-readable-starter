@@ -4,13 +4,9 @@ import axios from 'axios';
 
 axios.defaults.headers.common['Authorization'] = 'qualquer_coisa';
 
-const headers = {
-  Accept: 'application/json',
-  'Content-Type': 'application/json',
-  Authorization: 'qualquer_coisa',
-};
-
 const API_URL = 'http://localhost:3001';
+
+//Ajuda com criação dos requests Cláudio Rocha
 
 const getPosts = () =>
   axios({
@@ -28,12 +24,19 @@ const getPosts = () =>
       return response.data;
     });
 
-
-
 export const APIaddposts = post =>
   axios({
     url: API_URL + '/posts',
     method: 'POST',
+    data: {post}
+  }).then(response => {
+    return response.data;
+  });
+
+  export const APIdelPosts = id =>
+  axios({
+    url: API_URL + '/posts/${id}',
+    method: 'DELETE'
   }).then(response => {
     return response.data;
   });

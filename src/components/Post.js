@@ -20,9 +20,7 @@ const Post = ({ post }) => {
               <span className="txtitulo">{post.author}</span>
             </p>
             <div className="buttons">
-              <button className="btn leia">Leia Mais</button>
-              <button className="btn editar">Editar</button>
-              <button className="btn deletar">Deletar</button>
+              <button className="btn leia">Leia Mais</button>              
             </div>
           </div>
           <div className="post-icons">

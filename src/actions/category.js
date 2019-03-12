@@ -2,7 +2,7 @@ import { fetchCategories } from '../api';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 
-function receiveCategories(categories) {
+export function receiveCategories(categories) {
   return {
     type: RECEIVE_CATEGORIES,
     categories,

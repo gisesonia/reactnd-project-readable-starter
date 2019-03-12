@@ -8,5 +8,5 @@ export default combineReducers({
   loading,
   posts,
   comments,
- 
+  categories
 });

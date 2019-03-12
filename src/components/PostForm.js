@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-
+import { handleCategories } from "../actions/category";
 
 class PostForm extends Component {
-
-  
   constructor(props) {
     super(props);
-    
+    //console.log(props);
     this.state = {
       title: "",
       body: "",
@@ -19,8 +16,8 @@ class PostForm extends Component {
   }
 
   onCategoryChange = e => {
-    const title = e.target.value;
-    this.setState(() => ({ title }));
+    const category = e.target.value;
+    this.setState(() => ({ category }));
   };
 
   onTitleChange = e => {
@@ -56,7 +53,6 @@ class PostForm extends Component {
     }
   };
   render() {
-   
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
@@ -67,8 +63,11 @@ class PostForm extends Component {
               value={this.state.category}
               onChange={this.onCategoryChange}
             >
-              <option value="1">Option one</option>
-              
+              {this.props.categories.map(category =>
+                Object.keys(category).map((key, index) => {
+                  return <option key={category[index].name} value={category[key].name}>{category[key].name}</option>
+                })
+              )}    
             </select>
           </div>
           <label>Titulo:</label>
@@ -76,7 +75,7 @@ class PostForm extends Component {
             name="textinput"
             type="text"
             placeholder="titulo"
-            value={this.state.body}
+            value={this.state.title}
             onChange={this.onTitleChange}
           />
           <label>Autor:</label>
@@ -85,10 +84,10 @@ class PostForm extends Component {
             name="textinput"
             type="text"
             placeholder="autor"
-            value={this.state.body}
+            value={this.state.author}
             onChange={this.onAuthorChange}
           />
-          <div className="descricao">
+          <div className="">
             <label>Descrição</label>
             <textarea
               name="Descricao"
@@ -105,4 +104,13 @@ class PostForm extends Component {
   }
 }
 
-export default connect()(PostForm);
+const mapStateToProps = ({ categories }) => {
+  return {
+    categories: Object.values(categories)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { handleCategories }
+)(PostForm);

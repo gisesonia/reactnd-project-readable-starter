@@ -1,7 +1,6 @@
 import getPosts from "../api";
-import APIaddposts from "../api"; 
 import { receivePosts } from "./posts";
-import { addPost } from "./posts";
+
 
 export function handleInitialData() {
   return dispatch => {
@@ -12,10 +11,4 @@ export function handleInitialData() {
   };
 }
 
-export const createpost = newpost => {
-  return dispatch => {
-    return APIaddposts().then(newp => {
-      dispatch(addPost(newp));
-    });
-  };
-};
+
