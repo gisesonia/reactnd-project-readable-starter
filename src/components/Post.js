@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import { MdThumbDown } from "react-icons/md";
 import { MdThumbUp } from "react-icons/md";
 
-const Post = ({ post, id  }) => {
-  {console.log(post)}
-  return (
-   
+const Post = ({ post }) => {
+
+  return (   
     <div>
       {post === null ? (
         <p>Este post não existe</p>
@@ -20,10 +19,7 @@ const Post = ({ post, id  }) => {
             <p>
               <span className="titulo">Autor</span> -{" "}
               <span className="txtitulo">{post.author}</span>
-            </p>
-            <div className="buttons">
-              <button className="btn leia">Leia Mais</button>              
-            </div>
+            </p>           
           </div>
           <div className="post-icons">
             <p className="votos">

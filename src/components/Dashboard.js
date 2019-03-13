@@ -38,7 +38,7 @@ class Dashboard extends Component {
           <h1>Posts</h1>
           <MdAssignment className="icon-post" />
         </div>
-        <div className="buttons">
+        <div className="buttons">       
           <button
             className=" btn order-date"
             onClick={() => this.handleOptionChange("date")}
@@ -55,8 +55,11 @@ class Dashboard extends Component {
         <ul className="postlist">
           {orderedPosts.map(post => (
             <li key={post.id}>
-              <Post post={post} />
-            </li>
+              <Post post={post} />   
+              <div className="buttons">
+              <button className="btn leia">Leia Mais</button> 
+            </div>             
+            </li>          
           ))}
         </ul>
       </div>

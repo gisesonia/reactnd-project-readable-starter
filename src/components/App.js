@@ -28,7 +28,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route path="/addpost" component={AddPost} />
-              <Route exact path="/category/:category" component={PostCategory} />
+              <Route exact path="/:category/posts" component={PostCategory} />
               <Route path="/:category/:postId" component={PostDetails} />
               <Route component={Page404} />
             </Switch>

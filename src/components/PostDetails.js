@@ -1,55 +1,42 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchPost } from "../actions/posts";
 import { handleComments } from "../actions/comments";
 import { MdAssignment } from "react-icons/md";
 import Post from "./Post";
 
 class PostDetails extends Component {
-
   constructor(props) {
     super(props);
-    
-  }
-  componentDidMount() {
-    const { postId } = this.props.match.params
-    this.props.getPost(postId);
-    this.props.getComments(postId);
   }
 
   render() {
-    const {post} = this.props
+    const { post } = this.props;
+    //console.log(post[0])
     return (
-     <React.Fragment>
+      <React.Fragment>
         <div className="pageTitle">
           <h1>Post</h1>
           <MdAssignment className="icon-post" />
-        </div>        
+        </div>
         <div className="postlist">
-           <Post post={post} /> 
-          <button className="btn editar">Editar</button>
-          <button className="btn deletar">Deletar</button>
+          <Post post={post} />
         </div>
       </React.Fragment>
     );
   }
 }
-function mapStateToProps({posts}) {  
-  return {    
-    post: posts
-  }; 
+function mapStateToProps({ posts }, props) {
+  const filteredposts = Object.values(posts).map(post => {
+    return post;
+  });
+  const postinfo = filteredposts.filter(el => {
+    //console.log(el.id + 'hfhfh')
+    return el.id === props.match.params.postId;
+  });
+  //console.log(postinfo)
+  return {
+    post: postinfo[0]
+  };
 }
 
-const mapDispatchToProps = dispatch => ({
-  getComments(id) {
-    dispatch(handleComments(id));
-  },
-  getPost(id) {
-    dispatch(fetchPost(id));
-  }
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PostDetails);
+export default connect(mapStateToProps)(PostDetails);
