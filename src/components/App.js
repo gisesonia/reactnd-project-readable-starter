@@ -29,7 +29,7 @@ class App extends Component {
               <Route exact path="/" component={Dashboard} />
               <Route path="/addpost" component={AddPost} />
               <Route exact path="/category/:category" component={PostCategory} />
-              <Route path="/category/:category/:postId" component={PostDetails} />
+              <Route path="/:category/:postId" component={PostDetails} />
               <Route component={Page404} />
             </Switch>
             </div>
@@ -41,7 +41,7 @@ class App extends Component {
 }
 
 const mapStateToProps = ({ loading, categories }) => {
-  console.log(categories);
+  //console.log(categories);
   return { loading, categories };
 };
 

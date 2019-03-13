@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { MdThumbDown } from "react-icons/md";
 import { MdThumbUp } from "react-icons/md";
 
-const Post = ({ post }) => {
+const Post = ({ post, id  }) => {
+  {console.log(post)}
   return (
+   
     <div>
       {post === null ? (
         <p>Este post não existe</p>

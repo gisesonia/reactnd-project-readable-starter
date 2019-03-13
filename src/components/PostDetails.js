@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Post from "./Post";
-import { handleInitialData } from "../actions/shared";
+import { fetchPost } from "../actions/posts";
 import { handleComments } from "../actions/comments";
 import { MdAssignment } from "react-icons/md";
+import Post from "./Post";
 
 class PostDetails extends Component {
 
@@ -12,54 +12,40 @@ class PostDetails extends Component {
     
   }
   componentDidMount() {
-    this.props.getInitialData();
-    this.props.getComments();
+    const { postId } = this.props.match.params
+    this.props.getPost(postId);
+    this.props.getComments(postId);
   }
 
   render() {
+    const {post} = this.props
     return (
-      <div>
+     <React.Fragment>
         <div className="pageTitle">
-          <h1>Posts</h1>
+          <h1>Post</h1>
           <MdAssignment className="icon-post" />
+        </div>        
+        <div className="postlist">
+           <Post post={post} /> 
+          <button className="btn editar">Editar</button>
+          <button className="btn deletar">Deletar</button>
         </div>
-        <div className="buttons">
-          <button
-            className=" btn order-date"
-            onClick={() => this.handleOptionChange("date")}
-          >
-            Order by date
-          </button>
-          <button
-            className=" btn order-score"
-            onClick={() => this.handleOptionChange("score")}
-          >
-            Order by Score
-          </button>
-        </div>
-        <ul className="postlist">
-          <li />
-        </ul>
-        <button className="btn editar">Editar</button>
-        <button className="btn deletar">Deletar</button>
-      </div>
+      </React.Fragment>
     );
   }
 }
-function mapStateToProps(state, {props}) {
-  const { postId } = props.match.params;
-  console.log(state);
-  return {
-    postId
-  };
+function mapStateToProps({posts}) {  
+  return {    
+    post: posts
+  }; 
 }
 
 const mapDispatchToProps = dispatch => ({
-  getComments() {
-    dispatch(handleComments());
+  getComments(id) {
+    dispatch(handleComments(id));
   },
-  getInitialData() {
-    dispatch(handleInitialData());
+  getPost(id) {
+    dispatch(fetchPost(id));
   }
 });
 
