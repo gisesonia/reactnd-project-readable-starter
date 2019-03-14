@@ -108,10 +108,20 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts, categories }, props) {
   return {
-    posts: Object.values(posts)
+    posts: Object.values(posts),
+    categories: Object.values(categories)
   };
 }
-
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = dispatch => {
+  return {
+    //upVote: (id) => dispatch(upVotePostAction(id)),
+    //downVote: (id) => dispatch(downVotePostAction(id)),
+    deletePost: id => dispatch(delpost(id))
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);
