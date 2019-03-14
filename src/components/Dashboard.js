@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { delpost } from "../actions/posts";
 import Post from "./Post";
 import { MdAssignment } from "react-icons/md";
 
@@ -20,7 +21,8 @@ class Dashboard extends Component {
     super();
     this.state = {
       order: "asc",
-      option: "date"
+      option: "date",
+      category: ""
     };
   }
 
@@ -28,9 +30,20 @@ class Dashboard extends Component {
     this.setState({ option });
   };
 
+  onCategoryChange = e => {
+    const category = e.target.value;
+    this.setState(() => ({ category }));
+    this.props.history.push("/category");
+  };
+
+  onDelete = id => {
+    this.props.deletePost(id).then(res => console.log(res));
+  };
+
   render() {
     const { option } = this.state;
     const { posts } = this.props;
+    const { categories } = this.props;
     const orderedPosts = orderPosts(posts, option);
     return (
       <div>
@@ -51,6 +64,24 @@ class Dashboard extends Component {
           >
             Order by Score
           </button>
+          <select value={this.state.category} onChange={this.onCategoryChange}>
+            <option value="Selecione uma categoria">
+              Selecione uma categoria
+            </option>
+            {categories.map(category =>
+              Object.keys(category).map((key, index) => {
+                return (
+                  <option
+                    key={category[index].path}
+                    value={category[index].name}
+                  >
+                    {category[key].name}
+                  </option>
+                );
+                //console.log(category[key].name);
+              })
+            )}
+          </select>
         </div>
         <ul className="postlist">
           {orderedPosts.map(post => (
@@ -58,6 +89,16 @@ class Dashboard extends Component {
               <Post post={post} />   
               <div className="buttons">
               <button className="btn leia">Leia Mais</button> 
+              <button className="btn editar">Editar</button>
+                <button
+                  className="btn deletar"
+                  onClick={() => {
+                    this.onDelete(post.id);
+                    this.props.history.push("/");
+                  }}
+                >
+                  Deletar
+                </button>
             </div>             
             </li>          
           ))}
