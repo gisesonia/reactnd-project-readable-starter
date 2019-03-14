@@ -64,6 +64,7 @@ export const addPost = ({ title, body, author, category }) => ({
     body,
     author,
     category,
+    deleted: false,
     commentCount: 0,
     voteScore: 0
   }
