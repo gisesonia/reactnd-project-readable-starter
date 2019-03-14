@@ -8,61 +8,54 @@ const API_URL = 'http://localhost:3001';
 
 //Ajuda com criação dos requests Cláudio Rocha
 
-export const fetchComments = (postId) =>
-  axios({
-    url: API_URL + `/posts/${postId}/comments`,
-    method: "GET"
-  }).then(response => {
-    //console.log(response.data);
+//Ajuda com criação dos requests mentores Cláudio Rocha e Erick Grub
+
+const getPosts = () => {
+  return axios.get(`${API_URL}/posts`).then(response => {
     return response.data;
   });
+};
 
-
-export const fetchCategories = () =>
-  axios({
-    url: API_URL + '/categories',
-    method: 'GET',
-  }).then(response => {
+export const fetchCategories = () => {
+  return axios.get(`${API_URL}/categories`).then(response => {
     return response.data;
   });
+};
 
-
-const getPosts = () =>
-  axios({
-    url: API_URL + '/posts',
-    method: 'GET',
-  }).then(response => {
-    return response.data;
-  });
-
-  export const APIfetchPost = (id) =>
-    axios({
-      url: API_URL + `/posts/${id}`,
-      method: 'GET',
-    }).then(response => {
-      console.log(response)
+export const APIaddposts = post => {
+  return axios
+    .post(`${API_URL}/posts`, post)
+    .then(response => {
       return response.data;
-    });
-  
+    })
+    .catch(erro => console.log(erro));
+};
 
-export const APIaddposts = post =>
-  axios({
-    url: API_URL + '/posts',
-    method: 'POST',
-    data: {post}
-  }).then(response => {
-    return response.data;
-  });
+export const APIdelPosts = id => {
+  return axios
+    .get(`${API_URL}/posts/${id}`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(erro => console.log(erro));
+};
 
-  export const APIdelPosts = id =>
-  axios({
-    url: API_URL + `/posts/${id}`,
-    method: 'DELETE',
-    data:{
-      id
-    }
-  }).then(response => {
-    return response.data;
-  });
+export const APIfetchPost = (id) => {
+  return axios.get(`${API_URL}/posts/${id}`)
+  .then(response => {
+  console.log(response)
+  return response.data;
+})
+}
+
+export const fetchComments = postId => {
+  return axios
+    .get(`${API_URL}/posts/${postId}/comments`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(erro => console.log(erro));
+};
 
 export default getPosts;
+
