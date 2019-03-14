@@ -63,6 +63,7 @@ class PostForm extends Component {
               value={this.state.category}
               onChange={this.onCategoryChange}
             >
+            <option value="Selecione uma categoria">Selecione uma categoria</option>
               {this.props.categories.map(category =>
                 Object.keys(category).map((key, index) => {
                   return <option key={category[index].name} value={category[key].name}>{category[key].name}</option>

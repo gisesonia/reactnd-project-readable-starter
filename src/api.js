@@ -57,7 +57,10 @@ export const APIaddposts = post =>
   export const APIdelPosts = id =>
   axios({
     url: API_URL + `/posts/${id}`,
-    method: 'DELETE'
+    method: 'DELETE',
+    data:{
+      id
+    }
   }).then(response => {
     return response.data;
   });
