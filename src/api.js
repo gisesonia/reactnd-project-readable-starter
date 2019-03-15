@@ -33,7 +33,7 @@ export const APIaddposts = post => {
 
 export const APIdelPosts = id => {
   return axios
-    .get(`${API_URL}/posts/${id}`)
+    .get(`${API_URL}/posts/${id}`,id)
     .then(response => {
       return response.data;
     })
