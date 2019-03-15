@@ -23,8 +23,7 @@ export const fetchCategories = () => {
 };
 
 export const APIaddposts = post => {
-  return axios
-    .post(`${API_URL}/posts`, {...post})
+  return axios.post(`${API_URL}/posts`, {...post})
     .then(response => {
       return response.data;
     })
@@ -32,9 +31,9 @@ export const APIaddposts = post => {
 };
 
 export const APIdelPosts = id => {
-  return axios
-    .get(`${API_URL}/posts/${id}`,id)
+  return axios.delete(`${API_URL}/posts/${id}`)
     .then(response => {
+      console.log(response.data)
       return response.data;
     })
     .catch(erro => console.log(erro));
