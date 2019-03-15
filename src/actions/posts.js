@@ -34,7 +34,7 @@ export const fetchPost = (id) => {
 export const deletePost = (id) => {
   return {
     type: DELETE_POST,
-    id,
+    id
   }
 }
 
@@ -48,19 +48,25 @@ export const delpost = (idpost) => {
 
 
 export const createpost = newpost => {
-  const post = {
-    ...newpost,
-    timestamp: Date.now(),
-    id: uuid(),
+  const novopost = { 
+  ...newpost ,
+  id: uuid(),
+  timestamp: Date.now(),
+  deleted: false,
+  commentCount: 0,
+  voteScore: 0
   }
+console.log(novopost)
   return dispatch => {
-    return APIaddposts(post).then(newp => {
-      dispatch(addPost( newp ));
+    return APIaddposts(novopost).then(newp => {
+      dispatch(addPost(newp));
     });
   };
 };
 
-export const addPost = (newpost) => ({
-  type: ADD_POST,
-  newpost
-});
+export const addPost = (newpost) => {
+  return {
+    type: ADD_POST,
+    newpost
+  } 
+}

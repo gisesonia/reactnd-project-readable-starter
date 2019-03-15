@@ -4,7 +4,7 @@ import { LOAD_POST } from "../actions/posts";
 import { DELETE_POST } from "../actions/posts";
 
 export default function posts(state = [], action) {
-  switch (action.type) {
+   switch (action.type) {
     case RECEIVE_POSTS:
       return action.posts;
      case LOAD_POST:
@@ -12,7 +12,14 @@ export default function posts(state = [], action) {
     case ADD_POST:
       return [...state, action.newpost];
     case DELETE_POST:
-      return state.filter(({ id }) => id !== action.id);
+    const filteredpost = state.filter(({ id }) => id !== action.id)
+    const index = filteredpost.indexOf(action.id);
+    console.log(index)
+    const postslice = [
+      ...state.slice(0, index)    
+    ];
+    return postslice;
+   
     default:
       return state;
    
