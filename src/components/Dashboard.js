@@ -37,7 +37,7 @@ class Dashboard extends Component {
   };
 
   onDelete = id => {
-    this.props.deletePost(id).catch(erro => console.log(erro))
+    this.props.deletePost(id)
   };
 
   render() {

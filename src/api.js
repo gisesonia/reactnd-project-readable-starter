@@ -18,32 +18,35 @@ export const fetchComments = (postId) =>
   });
 
 
-export const fetchCategories = () =>
-  axios({
-    url: API_URL + '/categories',
-    method: 'GET',
-  }).then(response => {
-    return response.data;
-  });
+export const fetchCategories = () => {
+  return (
+    axios({
+      url: API_URL + '/categories',
+      method: 'GET',
+    }).then(response => {
+      return response.data;
+    })  
+  )
+}
+  
 
-
-const getPosts = () =>
-  axios({
+const getPosts = () =>{
+  return (axios({
     url: API_URL + '/posts',
     method: 'GET',
   }).then(response => {
     return response.data;
-  });
-
+  }))
+}
+  
 export const APIfetchPost = (id) => {
-  axios({
+  return (axios({
     url: API_URL + `/posts/${id}`,
     method: 'GET',
   }).then(response => {
     return response.data;
-  })
+  }))
 }
-
 
 export const APIaddposts = (newpost) => {
   console.log(newpost)
@@ -54,21 +57,26 @@ export const APIaddposts = (newpost) => {
       data: {
         ...newpost
       }
-    })
+    }).then(response => {
+      return response.data;
+    }).catch(erro => console.log(erro))
   )
 }
 
-export const APIdelPosts = id =>
-  axios({
-    url: API_URL + `/posts/${id}`,
-    method: 'DELETE',
-    data: {
-      id
-    }
-  }).then(response => {
-    return response.data;
-  });
-
+export const APIdelPosts = id => {
+  return(
+    axios({
+      url: API_URL + `/posts/${id}`,
+      method: 'DELETE',
+      data: {
+        id
+      }
+    }).then(response => {
+      return response.data;
+    })  
+  )
+}
+  
 export default getPosts;
 
 
