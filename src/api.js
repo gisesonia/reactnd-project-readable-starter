@@ -32,12 +32,10 @@ export const APIaddposts = post => {
 };
 
 export const APIdelPosts = id => {
-  return axios
-    .get(`${API_URL}/posts/${id}`)
-    .then(response => {
+  return axios.get(`${API_URL}/posts/${id}`)
+  .then(response => {
       return response.data;
-    })
-    .catch(erro => console.log(erro));
+  }).catch(erro => console.log(erro));
 };
 
 export const APIfetchPost = (id) => {

@@ -48,24 +48,19 @@ export const delpost = (idpost) => {
 
 
 export const createpost = newpost => {
+  const post = {
+    ...newpost,
+    timestamp: Date.now(),
+    id: uuid(),
+  }
   return dispatch => {
-    return APIaddposts(newpost).then(newp => {
-      dispatch(addPost(newp));
+    return APIaddposts(post).then(newp => {
+      dispatch(addPost( newp ));
     });
   };
 };
 
-export const addPost = ({ title, body, author, category }) => ({
+export const addPost = (newpost) => ({
   type: ADD_POST,
-  newpost: {
-    id: uuid(),
-    timestamp: Date.now(),
-    title,
-    body,
-    author,
-    category,
-    deleted: false,
-    commentCount: 0,
-    voteScore: 0
-  }
+  newpost
 });
