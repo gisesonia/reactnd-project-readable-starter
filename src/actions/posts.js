@@ -1,7 +1,7 @@
 import uuid from "uuid";
-import { APIaddposts } from "../api"; 
-import { APIfetchPost } from "../api"; 
-import {APIdelPosts} from "../api"; 
+import { APIaddposts } from "../api";
+import { APIfetchPost } from "../api";
+import { APIdelPosts } from "../api";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const LOAD_POST = "LOAD_POST";
 export const ADD_POST = "ADD_POST";
@@ -34,7 +34,7 @@ export const fetchPost = (id) => {
 export const deletePost = (id) => {
   return {
     type: DELETE_POST,
-    id
+    id,
   }
 }
 
@@ -48,25 +48,20 @@ export const delpost = (idpost) => {
 
 
 export const createpost = newpost => {
-  const novopost = { 
-  ...newpost ,
-  id: uuid(),
-  timestamp: Date.now(),
-  deleted: false,
-  commentCount: 0,
-  voteScore: 0
+  const post = {
+    ...newpost,
+    timestamp: Date.now(),
+    id: uuid(),
   }
-console.log(novopost)
   return dispatch => {
-    return APIaddposts(novopost).then(newp => {
-      dispatch(addPost(newp));
+    return APIaddposts(post).then(newp => {
+      console.log(post)
+      dispatch(addPost( newp ));
     });
   };
 };
 
-export const addPost = (newpost) => {
-  return {
-    type: ADD_POST,
-    newpost
-  } 
-}
+export const addPost = (newpost) => ({
+  type: ADD_POST,
+  newpost
+});

@@ -6,56 +6,70 @@ axios.defaults.headers.common['Authorization'] = 'qualquer_coisa';
 
 const API_URL = 'http://localhost:3001';
 
-//Ajuda com criação dos requests Cláudio Rocha
-
 //Ajuda com criação dos requests mentores Cláudio Rocha e Erick Grub
 
-const getPosts = () => {
-  return axios.get(`${API_URL}/posts`).then(response => {
+export const fetchComments = (postId) =>
+  axios({
+    url: API_URL + `/posts/${postId}/comments`,
+    method: "GET"
+  }).then(response => {
+    //console.log(response.data);
     return response.data;
   });
-};
 
-export const fetchCategories = () => {
-  return axios.get(`${API_URL}/categories`).then(response => {
+
+export const fetchCategories = () =>
+  axios({
+    url: API_URL + '/categories',
+    method: 'GET',
+  }).then(response => {
     return response.data;
   });
-};
 
-export const APIaddposts = post => {
-  return axios.post(`${API_URL}/posts`, {...post})
-    .then(response => {
-      return response.data;
-    })
-    .catch(erro => console.log(erro));
-};
 
-export const APIdelPosts = id => {
-  return axios.delete(`${API_URL}/posts/${id}`)
-    .then(response => {
-      console.log(response.data)
-      return response.data;
-    })
-    .catch(erro => console.log(erro));
-};
+const getPosts = () =>
+  axios({
+    url: API_URL + '/posts',
+    method: 'GET',
+  }).then(response => {
+    return response.data;
+  });
 
 export const APIfetchPost = (id) => {
-  axios.get(`${API_URL}/posts/${id}`)
-  .then(response => {
-  console.log(response)
-  return response.data;
-})
+  axios({
+    url: API_URL + `/posts/${id}`,
+    method: 'GET',
+  }).then(response => {
+    return response.data;
+  })
 }
 
 
-export const fetchComments = postId => {
-  return axios
-    .get(`${API_URL}/posts/${postId}/comments`)
-    .then(response => {
-      return response.data;
+export const APIaddposts = (newpost) => {
+  console.log(newpost)
+  return (
+    axios({
+      url: API_URL + '/posts',
+      method: 'POST',
+      data: {
+        ...newpost
+      }
     })
-    .catch(erro => console.log(erro));
-};
+  )
+}
+
+export const APIdelPosts = id =>
+  axios({
+    url: API_URL + `/posts/${id}`,
+    method: 'DELETE',
+    data: {
+      id
+    }
+  }).then(response => {
+    return response.data;
+  });
 
 export default getPosts;
+
+
 
