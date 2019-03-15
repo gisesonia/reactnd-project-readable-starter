@@ -2,7 +2,7 @@
 
 Esse é um projeto em que foi utilizado um backend fornecido pela Udacity do segundo projeto nanodegree com Redux em que é criada uma web app de gerenciar posts e comentários, podendo criar, deletar, comentar e votar. 
 
-Para o projetoeu criei a parte de frontend.
+Para o projeto eu criei a parte de frontend.
 
 ## Etapas de instalação
 
