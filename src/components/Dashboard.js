@@ -84,8 +84,8 @@ class Dashboard extends Component {
           </select>
         </div>
         <ul className="postlist">
-          {orderedPosts.map(post => (
-            <li key={post.id}>
+          {orderedPosts.map((post,index) => (
+            <li key={index}>
               <Post post={post} />   
               <div className="buttons">
               <button className="btn leia">Leia Mais</button> 
