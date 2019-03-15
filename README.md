@@ -4,7 +4,7 @@ Esse é um projeto em que foi utilizado um backend fornecido pela Udacity do seg
 
 Para o projetoeu criei a parte de frontend.
 
-## Start Developing
+## Etapas de instalação
 
 To get started developing right away:
 
@@ -20,3 +20,13 @@ To get started developing right away:
 ## API Server
 
 Informações sobre como utilizar a API server no link [README file](api-server/README.md).
+
+##Agradecimentos
+
+Esse é projeto foi mais difícil que o primeiro, então eu precisei de consultar vários sites e várias pessoas no fórum Slack.
+
+Agradeço aos mentores do curso
+
+Alunos - Rafael Maia Chieregatto, Alexandre Rocha  
+
+http://linkedin.com/in/bruna-vieira-teixeira
