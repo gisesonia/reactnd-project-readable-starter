@@ -8,7 +8,6 @@ export const ADD_POST = "ADD_POST";
 export const EDIT_POST = "EDIT_POST";
 export const DELETE_POST = "DELETE_POST";
 
-
 export function receivePosts(posts) {
   return {
     type: RECEIVE_POSTS,
@@ -31,14 +30,16 @@ export const fetchPost = (id) => {
   }
 }
 
-export const deletePost = (id) => {
+export const deletePost = params => {
   return {
     type: DELETE_POST,
-    id,
-  }
-}
+    id: params.id
+  };
+};
+
 
 export const delpost = (idpost) => {
+  console.log(idpost)
   return dispatch => {
     return APIdelPosts(idpost).then(idp => {
       dispatch(deletePost(idp));
@@ -52,10 +53,11 @@ export const createpost = newpost => {
     ...newpost,
     timestamp: Date.now(),
     id: uuid(),
+    commentCount: 0,
+    voteScore: 0
   }
   return dispatch => {
     return APIaddposts(post).then(newp => {
-      console.log(post)
       dispatch(addPost( newp ));
     });
   };

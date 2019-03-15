@@ -49,7 +49,6 @@ export const APIfetchPost = (id) => {
 }
 
 export const APIaddposts = (newpost) => {
-  console.log(newpost)
   return (
     axios({
       url: API_URL + '/posts',
@@ -68,9 +67,6 @@ export const APIdelPosts = id => {
     axios({
       url: API_URL + `/posts/${id}`,
       method: 'DELETE',
-      data: {
-        id
-      }
     }).then(response => {
       return response.data;
     })  

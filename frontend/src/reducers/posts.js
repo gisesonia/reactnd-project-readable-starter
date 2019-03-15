@@ -12,14 +12,7 @@ export default function posts(state = [], action) {
     case ADD_POST:
       return [...state, action.newpost];
     case DELETE_POST:
-    //return state.filter(post => post.id !== action.id)
-    const filteredpost = state.filter(({ id }) => id === action.id)
-      const index = filteredpost.indexOf(action.id);
-
-      const postslice = [
-        ...state.slice(0, index)
-      ];
-     return postslice;      
+      return state.filter(post => post.id !== action.id); 
     default:
       return state;
   }
