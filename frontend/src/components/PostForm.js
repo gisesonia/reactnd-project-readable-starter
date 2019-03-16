@@ -87,18 +87,18 @@ class PostForm extends Component {
             placeholder="autor"
             value={this.state.author}
             onChange={this.onAuthorChange}
-          />
-          <div className="">
-            <label>Descrição</label>
+          />         
+            <label>Descrição:</label>
             <textarea
               name="Descricao"
               className="textarea"
               id="Descricao"
               value={this.state.body}
               onChange={this.onDescriptionChange}
-            />
-          </div>
-          <button className="btn editar">Adiciona post</button>
+            />     
+          <div className="buttons">
+          <button className="btn addpost">Adiciona post</button>
+          </div>          
         </form>
       </div>
     );

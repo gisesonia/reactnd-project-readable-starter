@@ -10,17 +10,51 @@ a {
   color: #252525;
 }
 
+.formulario {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 10px;
 }
 
+select {
+  border: 1px solid #a1a1a1;
+  text-transform: uppercase;
+  height: 28px;
+  min-width: 180px;
+  font-size: 12px;
+  margin: 20px 10px 0 0;
+  padding: 5px;
+  outline: none !important;
+  background: none;
+}
+
+input {
+  border: 1px solid #a1a1a1;
+  text-transform: uppercase;
+  height: 20px;
+  min-width: 30px;
+  font-size: 12px;
+  margin: 10px 10px 5px 0;
+  padding: 5px;
+  outline: none !important;
+  background: none;
+}
+label{
+  padding: 5px;
+}
 .navigation {
   display: flex;
   color: #ffffff;
   background-color: #53a4cc;
   margin: 0;
+  min-height: 50px;
+  align-items: center;
 }
 
 .btn {
@@ -30,7 +64,6 @@ a {
   border: 1px solid;
   cursor: pointer;
   font-size: 12px;
-  width: 80px;
   position: relative;
 }
 .buttons {
@@ -44,16 +77,26 @@ a {
   background-color: #ffffff;
   color: #53a4cc;
   border-color: rgb(90, 147, 233);
+  width: 80px;
 }
 .editar {
   background-color: #ffffff;
   border-color: #e0580a;
   color: #ec5012;
+  width: 80px;
+}
+
+.addpost {
+  background-color: #ffffff;
+  border-color: #e0580a;
+  color: #ec5012;
+  max-width: 180px;
 }
 .deletar {
   background-color: #ffffff;
   border-color: #e0350a;
   color: #ec1912;
+  width: 80px;
 }
 .order-score {
   background-color: #ffffff;
@@ -157,8 +200,8 @@ li {
   padding: 10px;
   display: flex;
   margin: 0 auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 3px;
+  box-shadow: 0 2px 8px 0 rgba(175, 175, 175, 0.2),
+    0 3px 6px 0 rgba(0, 0, 0, 0.19);
   background-color: white;
   justify-content: space-between;
 }
@@ -226,11 +269,14 @@ span.titulo {
 }
 
 .textarea {
-  border-radius: 4px;
-  border: 1px solid #dad7d7;
-  padding: 10px;
-  font-size: 15px;
-  height: 100px;
+  min-width: 480px;
+  font-size: 12px;
+  margin: 20px 10px 0 0;
+  outline: none !important;
+  background: none; 
+  border: 1px solid #a1a1a1;
+  padding: 10px; 
+  height: 80px;
 }
 
 .post-length {
@@ -238,4 +284,8 @@ span.titulo {
   margin-top: 10px;
   font-size: 20px;
   color: #c3392a;
+}
+
+.navigation li a{
+  color: #ffffff;
 }
