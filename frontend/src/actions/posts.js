@@ -23,6 +23,7 @@ export function fetchPost(id) {
 }
 
 export const loadpost = idpost => {
+  
   return dispatch => {
     return APIfetchPost(idpost).then(idp => {
       dispatch(fetchPost(idp));

@@ -10,10 +10,10 @@ class PostDetails extends Component {
     super(props);
   }
 
-  componentDidMount() {
-      this.props.loadPost();
+  /* componentDidMount() {
+      this.props.loadPost(id);
      
-    }
+    } */
 
   render() {
     //const { post } = this.props;
@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);
+export default connect()(PostDetails);
 
 
 /* render() {

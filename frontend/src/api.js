@@ -20,6 +20,7 @@ const getPosts = () =>
 
 
 export const APIfetchPost = (id) =>
+console.log(id)
   axios({
     url: API_URL + `/posts/${id}`,
     method: "GET"
