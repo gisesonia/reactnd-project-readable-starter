@@ -16,16 +16,12 @@ class PostDetails extends Component {
     }
 
   render() {
-    const { post } = this.props;
+    //const { post } = this.props;
     //console.log(post[0])
     return (
       <React.Fragment>
         <div className="pageTitle">
-          <h1>Post</h1>
-          <MdAssignment className="icon-post" />
-        </div>
-        <div className="postlist">
-          <Post post={post} />
+         
         </div>
       </React.Fragment>
     );

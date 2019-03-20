@@ -19,7 +19,7 @@ const getPosts = () =>
 
 
 
-export const APIfetchPost = (id) =>{
+export const APIfetchPost = (id) =>
   axios({
     url: API_URL + `/posts/${id}`,
     method: "GET"
@@ -27,7 +27,7 @@ export const APIfetchPost = (id) =>{
     //console.log(response.data)
     return response.data;    
   });
-}
+
  
 
 export const fetchCategories = () =>
@@ -41,7 +41,7 @@ export const fetchCategories = () =>
 
  
 
-export const APIaddposts = post => {
+export const APIaddposts = post => 
   axios({
     url: API_URL + "/posts", 
     method: "POST",
@@ -49,20 +49,20 @@ export const APIaddposts = post => {
   }).then(response => {
     return response.data;
   });
-}
+
   
 
-export const APIdelPosts = id => {
+export const APIdelPosts = id => 
   axios({
     url: API_URL + `/posts/${id}`,
     method: "DELETE"
   }).then(response => {
     return response.data;
   });
-}
+
   
 
-export const fetchComments = postId =>{
+export const fetchComments = postId =>
   axios({
     url: API_URL + `/posts/${postId}/comments`,
     method: "GET"
@@ -70,7 +70,7 @@ export const fetchComments = postId =>{
     //console.log(response.data);
     return response.data;
   });
-}
+
   
 
 export default getPosts;
