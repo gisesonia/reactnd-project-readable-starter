@@ -1,9 +1,11 @@
 import { v4 } from "uuid";
 import { APIaddposts } from "../api";
 import { APIdelPosts } from "../api";
+import { APIfetchPost } from "../api";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
+export const FETCH_POST = "RECEIVE_POSTS";
 export const ADD_POST = "ADD_POST";
-//export const EDIT_POST = "EDIT_POST";
+export const EDIT_POST = "EDIT_POST";
 export const DELETE_POST = "DELETE_POST";
 
 export function receivePosts(posts) {
@@ -12,6 +14,21 @@ export function receivePosts(posts) {
     posts
   };
 }
+
+export function fetchPost(id) {
+  return {
+    type: FETCH_POST,
+    id
+  };
+}
+
+export const loadpost = idpost => {
+  return dispatch => {
+    return APIfetchPost(idpost).then(idp => {
+      dispatch(fetchPost(idp));
+    });
+  };
+};
 
 export const deletePost = params => {
   return {

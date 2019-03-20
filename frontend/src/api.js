@@ -9,24 +9,39 @@ const API_URL = 'http://localhost:3001';
 //Ajuda com criação dos requests mentores Cláudio Rocha e Erick Grub
 
 const getPosts = () =>
-  axios({
+    axios({
     url: API_URL + "/posts",
     method: "GET"
   }).then(response => {
-    return response.data;
     //console.log(response.data)
+    return response.data;    
   });
+
+
+
+export const APIfetchPost = (id) =>{
+  axios({
+    url: API_URL + `/posts/${id}`,
+    method: "GET"
+  }).then(response => {
+    //console.log(response.data)
+    return response.data;    
+  });
+}
+ 
 
 export const fetchCategories = () =>
   axios({
     url: API_URL + "/categories",
     method: "GET"
   }).then(response => {
-    console.log(response.data);
+    //console.log(response.data);
     return response.data;
   });
 
-export const APIaddposts = post =>
+ 
+
+export const APIaddposts = post => {
   axios({
     url: API_URL + "/posts", 
     method: "POST",
@@ -34,16 +49,20 @@ export const APIaddposts = post =>
   }).then(response => {
     return response.data;
   });
+}
+  
 
-export const APIdelPosts = id =>
+export const APIdelPosts = id => {
   axios({
     url: API_URL + `/posts/${id}`,
     method: "DELETE"
   }).then(response => {
     return response.data;
   });
+}
+  
 
-export const fetchComments = postId =>
+export const fetchComments = postId =>{
   axios({
     url: API_URL + `/posts/${postId}/comments`,
     method: "GET"
@@ -51,5 +70,7 @@ export const fetchComments = postId =>
     //console.log(response.data);
     return response.data;
   });
+}
+  
 
 export default getPosts;
