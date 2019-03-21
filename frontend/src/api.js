@@ -17,61 +17,59 @@ const getPosts = () =>
     return response.data;    
   });
 
-
-
-export const APIfetchPost = (id) =>
-console.log(id)
-  axios({
-    url: API_URL + `/posts/${id}`,
-    method: "GET"
-  }).then(response => {
-    //console.log(response.data)
-    return response.data;    
-  });
-
- 
-
-export const fetchCategories = () =>
-  axios({
-    url: API_URL + "/categories",
-    method: "GET"
-  }).then(response => {
-    //console.log(response.data);
-    return response.data;
-  });
-
- 
-
-export const APIaddposts = post => 
-  axios({
-    url: API_URL + "/posts", 
-    method: "POST",
-    data: { ...post }
-  }).then(response => {
-    return response.data;
-  });
-
+  export const APIfetchPost = id => {
+    axios({
+      url: API_URL + `/posts/${id}`,
+      method: "GET"
+    }).then(response => {
+      console.log(">>>" + response.data);
+      return response.data;
+    });
+  };
   
-
-export const APIdelPosts = id => 
-  axios({
-    url: API_URL + `/posts/${id}`,
-    method: "DELETE"
-  }).then(response => {
-    return response.data;
-  });
-
+  export const fetchCategories = () =>
+    axios({
+      url: API_URL + "/categories",
+      method: "GET"
+    }).then(response => {
+      //console.log(response.data);
+      return response.data;
+    });
   
-
-export const fetchComments = postId =>
-  axios({
-    url: API_URL + `/posts/${postId}/comments`,
-    method: "GET"
-  }).then(response => {
-    //console.log(response.data);
-    return response.data;
-  });
-
+  export const APIaddposts = post =>
+    axios({
+      url: API_URL + "/posts",
+      method: "POST",
+      data: { ...post }
+    }).then(response => {
+      return response.data;
+    });
   
-
-export default getPosts;
+  export const APIdelPosts = id =>
+    axios({
+      url: API_URL + `/posts/${id}`,
+      method: "DELETE"
+    }).then(response => {
+      return response.data;
+    });
+  
+  export const APIfetchComments = postId =>
+    axios({
+      url: API_URL + `/posts/${postId}/comments`,
+      method: "GET"
+    }).then(response => {
+      //console.log(response.data);
+      return response.data;
+    });
+  
+  export const APIfetchComment = commentId =>
+    axios({
+      url: API_URL + `/comments/${commentId}`,
+      method: "GET"
+    }).then(response => {
+      //console.log(response.data);
+      return response.data;
+    });
+  
+  export default getPosts;
+  
