@@ -3,6 +3,8 @@ import { APIaddposts } from "../api";
 import { APIdelPosts } from "../api";
 import { APIfetchPost } from "../api";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
+
+export const FETCH_POST = "FETCH_POST";
 export const ADD_POST = "ADD_POST";
 export const EDIT_POST = "EDIT_POST";
 export const DELETE_POST = "DELETE_POST";
