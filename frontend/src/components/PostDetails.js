@@ -6,41 +6,47 @@ import { MdAssignment } from "react-icons/md";
 import Post from "./Post";
 
 class PostDetails extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    //console.log(this.props.params.postId)
+    this.props.loadPost(this.props.match.params.postId);
+    //this.props.loadComments(this.props.match.params.postId);
   }
 
-  /* componentDidMount() {
-      this.props.loadPost(id);
-     
-    } */
-
   render() {
-    //const { post } = this.props;
+    const { post } = this.props;
     //console.log(post[0])
+    console.log(this.props.post);
     return (
       <React.Fragment>
         <div className="pageTitle">
-         
+          <h1>Post</h1>
+          <MdAssignment className="icon-post" />
         </div>
+        <div className="postlist">{post && <Post post={post} />}</div>
       </React.Fragment>
     );
   }
 }
-function mapStateToProps(state, props) {
-  console.log(state)
-}
-
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state, props) => {
+  console.log(state);
   return {
-    //upVote: (id) => dispatch(upVotePostAction(id)),
-    //downVote: (id) => dispatch(downVotePostAction(id)),
-    loadPost: id => dispatch(loadpost(id))
+    post: state.post
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  loadPost(id) {
+    dispatch(loadpost(id));
+  },
+  loadComments(postid) {
+    dispatch(loadpost(handleComments(postid)));
+  }
+});
 
-export default connect()(PostDetails);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PostDetails);
 
 
 /* render() {

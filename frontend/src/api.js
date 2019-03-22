@@ -18,14 +18,16 @@ const getPosts = () =>
   });
 
   export const APIfetchPost = id => {
-    axios({
+    //console.log("fetchId: ", id);
+    return axios({
       url: API_URL + `/posts/${id}`,
       method: "GET"
     }).then(response => {
-      console.log(">>>" + response.data);
+      console.log(">>>", response.data);
       return response.data;
     });
   };
+  
   
   export const fetchCategories = () =>
     axios({
@@ -53,23 +55,25 @@ const getPosts = () =>
       return response.data;
     });
   
-  export const APIfetchComments = postId =>
-    axios({
-      url: API_URL + `/posts/${postId}/comments`,
-      method: "GET"
-    }).then(response => {
-      //console.log(response.data);
-      return response.data;
-    });
-  
-  export const APIfetchComment = commentId =>
-    axios({
-      url: API_URL + `/comments/${commentId}`,
-      method: "GET"
-    }).then(response => {
-      //console.log(response.data);
-      return response.data;
-    });
+    export const APIfetchComments = postId => {
+      return axios({
+        url: API_URL + `/posts/${postId}/comments`,
+        method: "GET"
+      }).then(response => {
+        //console.log(response.data);
+        return response.data;
+      });
+    };
+    
+    export const APIfetchComment = commentId => {
+      return axios({
+        url: API_URL + `/comments/${commentId}`,
+        method: "GET"
+      }).then(response => {
+        //console.log(response.data);
+        return response.data;
+      });
+    };
   
   export default getPosts;
   
