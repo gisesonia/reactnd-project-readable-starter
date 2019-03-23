@@ -98,7 +98,19 @@ class Dashboard extends Component {
                   >
                     Leia Mais
                   </button>
-                  <button className="btn editar">Editar</button>
+                  <button
+                    className="btn editar"
+                    onClick={() => {
+                      this.props.history.push(
+                        `/${post.category}/edit/${post.id}`,
+                        {
+                          teste: post
+                        }
+                      );
+                    }}
+                  >
+                    Editar
+                  </button>
                   <button
                     className="btn deletar"
                     onClick={() => {

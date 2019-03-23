@@ -1,17 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import PostForm from "./PostForm";
-import { editPost } from "../actions/posts";
+import { postEdit } from "../actions/posts";
 
 const EditPost = props => {
-  //console.log(props);
+  console.log(props);
   return (
     <div>
       <h1 className="pageTitle">Editar Posts</h1>
       <PostForm
-        onSubmit={updatepost => {
-          props.dispatch(editPost(updatepost));
-          props.history.push("/");
+        post={props.postFiltered}
+        onSubmit={(updatepost) => {
+           console.log(updatepost)
+          //props.dispatch(postEdit(updatepost));
+          //props.history.push("/");
         }}
       />
     </div>
@@ -19,9 +21,9 @@ const EditPost = props => {
 };
 
 const mapStateToProps = (state, props) => {
-  console.log(">>" + state);
+  console.log( state.posts.find(post => post.id === props.match.params.postId));
   return {
-    posts: state.posts.find(post => post.id === props.match.params.id)
+    postFiltered: state.posts.find(post => post.id === props.match.params.postId)
   };
 };
 

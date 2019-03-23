@@ -7,8 +7,8 @@ class PostForm extends Component {
     super(props);
 
     this.state = {
-      title: "",
-      body: "",
+      title: props.post ? props.post.title : '',
+      body: props.post ? props.post.body : '',
       author: "",
       category: "",
       error: ""
@@ -68,6 +68,9 @@ class PostForm extends Component {
               value={this.state.category}
               onChange={this.onCategoryChange}
             >
+              <option value="Selecione uma categoria">
+                Selecione uma categoria
+              </option>
               {this.props.categories.map(category =>
                 Object.keys(category).map((key, index) => {
                   return (

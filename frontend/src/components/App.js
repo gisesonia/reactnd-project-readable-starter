@@ -9,7 +9,7 @@ import Page404 from "../components/Page404";
 import PostDetails from "../components/PostDetails";
 import AddPost from "../components/AddPost";
 import PostCategory from "../components/PostCategory";
-import EditPostContainer from "../components/EditPostContainer";
+import EditPost from "../components/EditPost";
 
 //referência de loading exemplo de todos do curso e api do exemplo do twitter
 
@@ -31,7 +31,7 @@ class App extends Component {
                 <Route path="/addpost" component={AddPost} />
                 <Route
                   path="/:category/edit/:postId"
-                  component={EditPostContainer}
+                  component={EditPost}
                 />
                 <Route exact path="/:category" component={PostCategory} />
                 <Route path="/:category/:postId" component={PostDetails} />

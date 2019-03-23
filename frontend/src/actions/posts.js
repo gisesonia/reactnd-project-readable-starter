@@ -1,10 +1,5 @@
 import { v4 } from "uuid";
-import {
-  APIaddposts,
-  APIdelPosts,
-  APIfetchPost,
-  APIfetchComments
-} from "../api";
+import {  APIaddposts,  APIdelPosts,  APIfetchPost, APIeditPost } from "../api";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const ADD_POST = "ADD_POST";
 export const EDIT_POST = "EDIT_POST";
@@ -65,6 +60,21 @@ export const createPost = newpost => {
   return dispatch => {
     return APIaddposts(post).then(newp => {
       dispatch(addPost(newp));
+    });
+  };
+};
+
+export const editPost = (id, updates) => ({
+  type: EDIT_POST,
+  id,
+  updates
+});
+
+export const postEdit = (idpost, values) => {
+  console.log(idpost);
+  return dispatch => {
+    return APIeditPost(idpost, values).then((idp, val) => {
+      dispatch(editPost(idp, val));
     });
   };
 };
