@@ -38,4 +38,3 @@ export default connect(
   mapStateToProps,
   { handleCategories }
 )(PostCategory);
-

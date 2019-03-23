@@ -15,6 +15,18 @@ class EditPostContainer extends Component {
     return <div>Teste</div>;
   }
 }
-
+function mapStateToProps({ posts }, props) {
+  const filteredposts = Object.values(posts).map(post => {
+    return post;
+  });
+  const postinfo = filteredposts.filter(el => {
+    //console.log(el.id + 'hfhfh')
+    return el.id === props.match.params.postId;
+  });
+  //console.log(postinfo)
+  return {
+    post: postinfo[0]
+  };
+}
 
 export default connect()(EditPostContainer);

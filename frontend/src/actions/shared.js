@@ -1,7 +1,6 @@
 import getPosts from "../api";
 import { receivePosts } from "./posts";
 
-
 export function handleInitialData() {
   return dispatch => {
     return getPosts().then(posts => {
@@ -10,5 +9,3 @@ export function handleInitialData() {
     });
   };
 }
-
-

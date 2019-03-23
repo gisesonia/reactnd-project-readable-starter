@@ -5,7 +5,7 @@ import { handleCategories } from "../actions/category";
 class PostForm extends Component {
   constructor(props) {
     super(props);
-    //console.log(props);
+
     this.state = {
       title: "",
       body: "",
@@ -33,6 +33,7 @@ class PostForm extends Component {
   onDescriptionChange = e => {
     const body = e.target.value;
     this.setState(() => ({ body }));
+    //console.log(body);
   };
 
   onSubmit = e => {
@@ -44,6 +45,10 @@ class PostForm extends Component {
       }));
     } else {
       this.setState(() => ({ error: "" }));
+      //console.log(this.state.category);
+      //console.log(this.state.title);
+      //console.log(this.state.author);
+      //console.log(this.state.body);
       this.props.onSubmit({
         title: this.state.title,
         body: this.state.body,
@@ -63,12 +68,19 @@ class PostForm extends Component {
               value={this.state.category}
               onChange={this.onCategoryChange}
             >
-            <option value="Selecione uma categoria">Selecione uma categoria</option>
               {this.props.categories.map(category =>
                 Object.keys(category).map((key, index) => {
-                  return <option key={category[index].name} value={category[key].name}>{category[key].name}</option>
+                  return (
+                    <option
+                      key={category[index].path}
+                      value={category[index].name}
+                    >
+                      {category[key].name}
+                    </option>
+                  );
+                  //console.log(category[key].name);
                 })
-              )}    
+              )}
             </select>
           </div>
           <label>Titulo:</label>
@@ -87,18 +99,18 @@ class PostForm extends Component {
             placeholder="autor"
             value={this.state.author}
             onChange={this.onAuthorChange}
-          />         
-            <label>Descrição:</label>
+          />
+          <div className="">
+            <label>Descrição</label>
             <textarea
               name="Descricao"
               className="textarea"
               id="Descricao"
               value={this.state.body}
               onChange={this.onDescriptionChange}
-            />     
-          <div className="buttons">
-          <button className="btn addpost">Adiciona post</button>
-          </div>          
+            />
+          </div>
+          <button className="btn adicionar">Adiciona post</button>
         </form>
       </div>
     );

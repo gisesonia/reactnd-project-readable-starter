@@ -9,7 +9,7 @@ export default class Menu extends Component {
           <ul className="navigation">
             <li>READABLE</li>
             <li>
-            <Link to="/">Todos</Link>
+              <Link to="/">All</Link>
             </li>
             <li>
               <Link to="/addpost">Criar posts</Link>

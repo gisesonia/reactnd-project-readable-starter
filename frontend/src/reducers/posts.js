@@ -10,7 +10,7 @@ export default function posts(state = [], action) {
     case ADD_POST:
       return [...state, action.newpost];
     case DELETE_POST:
-      return state.filter(post => post.id !== action.id); 
+      return state.filter(post => post.id !== action.id);
     default:
       return state;
   }
@@ -19,7 +19,6 @@ export default function posts(state = [], action) {
 export function post(state = {}, action) {
   switch (action.type) {
     case FETCH_POST:
-    console.log(action.post)
       return { ...action.post };
     default:
       return state;

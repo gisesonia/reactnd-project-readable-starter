@@ -17,10 +17,9 @@ function orderPosts(posts, option) {
 }
 
 class Dashboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      order: "asc",
       option: "date",
       category: ""
     };
@@ -37,9 +36,8 @@ class Dashboard extends Component {
   };
 
   onDelete = id => {
-    this.props.deletePost(id)
+    this.props.deletePost(id);
   };
-
   render() {
     const { option } = this.state;
     const { posts } = this.props;
@@ -51,7 +49,7 @@ class Dashboard extends Component {
           <h1>Posts</h1>
           <MdAssignment className="icon-post" />
         </div>
-        <div className="buttons">       
+        <div className="buttons">
           <button
             className=" btn order-date"
             onClick={() => this.handleOptionChange("date")}
@@ -84,24 +82,36 @@ class Dashboard extends Component {
           </select>
         </div>
         <ul className="postlist">
-          {orderedPosts.map((post,index) => (
-            <li key={index}>
-              <Post post={post} />   
-              <div className="buttons">
-              <button className="btn leia">Leia Mais</button> 
-              <button className="btn editar">Editar</button>
-                <button
-                  className="btn deletar"
-                  onClick={() => {
-                    this.onDelete(post.id);
-                    this.props.history.push("/");
-                  }}
-                >
-                  Deletar
-                </button>
-            </div>             
-            </li>          
-          ))}
+          {orderedPosts.map((post, index) => {
+            //console.log(post);
+            return (
+              <li key={index}>
+                <Post post={post} />
+                <div className="buttons">
+                  <button
+                    className="btn leia"
+                    onClick={() => {
+                      this.props.history.push(`/posts/${post.id}`, {
+                        teste: post
+                      });
+                    }}
+                  >
+                    Leia Mais
+                  </button>
+                  <button className="btn editar">Editar</button>
+                  <button
+                    className="btn deletar"
+                    onClick={() => {
+                      this.onDelete(post.id);
+                      this.props.history.push("/");
+                    }}
+                  >
+                    Deletar
+                  </button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     );
@@ -109,6 +119,7 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ posts, categories }, props) {
+  //console.log(Object.values(posts))
   return {
     posts: Object.values(posts),
     categories: Object.values(categories)

@@ -1,4 +1,4 @@
-import { RECEIVE_CATEGORIES } from '../actions/category';
+import { RECEIVE_CATEGORIES } from "../actions/category";
 
 //ajuda do mentor Cláudio Rocha
 

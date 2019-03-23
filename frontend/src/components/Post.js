@@ -4,8 +4,7 @@ import { MdThumbDown } from "react-icons/md";
 import { MdThumbUp } from "react-icons/md";
 
 const Post = ({ post }) => {
-
-  return (   
+  return (
     <div>
       {post === null ? (
         <p>Este post não existe</p>
@@ -19,7 +18,7 @@ const Post = ({ post }) => {
             <p>
               <span className="titulo">Autor</span> -{" "}
               <span className="txtitulo">{post.author}</span>
-            </p>           
+            </p>
           </div>
           <div className="post-icons">
             <p className="votos">

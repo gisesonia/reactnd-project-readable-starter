@@ -1,8 +1,10 @@
 import { v4 } from "uuid";
-import { APIaddposts } from "../api";
-import { APIdelPosts } from "../api";
-import { APIfetchPost } from "../api";
-import { APIfetchComments } from "../api";
+import {
+  APIaddposts,
+  APIdelPosts,
+  APIfetchPost,
+  APIfetchComments
+} from "../api";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const ADD_POST = "ADD_POST";
 export const EDIT_POST = "EDIT_POST";
@@ -10,7 +12,6 @@ export const DELETE_POST = "DELETE_POST";
 export const FETCH_POST = "FETCH_POST";
 export const FETCH_COMMENT = "FETCH_COMMENT";
 export const FETCH_COMMENTS = "FETCH_COMMENTS";
-
 
 export function receivePosts(posts) {
   return {
@@ -20,7 +21,6 @@ export function receivePosts(posts) {
 }
 
 export function fetchPost(post) {
-  console.log(post)
   return {
     type: FETCH_POST,
     post
