@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://api-udacity.herokuapp.com";
-
-//const API_URL = "https://custom-readable-api.herokuapp.com";
+const API_URL = "http://localhost:3001";
 
 //Ajuda com criação dos requests Cláudio Rocha
 
@@ -83,6 +81,7 @@ export const APIeditPost = (id, values) => {
     method: "PUT",
     data: { ...values }
   }).then(response => {
+    console.log(response.data)
     return response.data;
   });
 };

@@ -12,8 +12,8 @@ const EditPost = props => {
         post={props.postFiltered}
         onSubmit={(updatepost) => {
            console.log(updatepost)
-          //props.dispatch(postEdit(updatepost));
-          //props.history.push("/");
+          props.dispatch(postEdit(props.postFiltered.id,updatepost));
+          props.history.push("/");
         }}
       />
     </div>

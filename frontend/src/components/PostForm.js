@@ -9,8 +9,8 @@ class PostForm extends Component {
     this.state = {
       title: props.post ? props.post.title : '',
       body: props.post ? props.post.body : '',
-      author: "",
-      category: "",
+      author: props.post ? props.post.author : '',
+      category: props.post ? props.post.category : '',
       error: ""
     };
   }
@@ -65,6 +65,7 @@ class PostForm extends Component {
           <div>
             <label>Categoria:</label>
             <select
+              disabled={this.props.post ? "disabled" : ""} 
               value={this.state.category}
               onChange={this.onCategoryChange}
             >
@@ -100,6 +101,7 @@ class PostForm extends Component {
             name="textinput"
             type="text"
             placeholder="autor"
+            disabled={this.props.post ? "disabled" : ""} 
             value={this.state.author}
             onChange={this.onAuthorChange}
           />
@@ -113,7 +115,7 @@ class PostForm extends Component {
               onChange={this.onDescriptionChange}
             />
           </div>
-          <button className="btn adicionar">Adiciona post</button>
+          <button className="btn adicionar">{this.props.post ? "Editar post" : "Adiciona post"}</button>
         </form>
       </div>
     );

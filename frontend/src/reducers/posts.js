@@ -1,5 +1,6 @@
 import { RECEIVE_POSTS } from "../actions/posts";
 import { ADD_POST } from "../actions/posts";
+import { EDIT_POST } from "../actions/posts";
 import { DELETE_POST } from "../actions/posts";
 import { FETCH_POST } from "../actions/posts";
 
@@ -9,6 +10,17 @@ export default function posts(state = [], action) {
       return action.posts;
     case ADD_POST:
       return [...state, action.newpost];
+    case EDIT_POST:
+      return state.map(post => {
+        if (post.id === action.id) {
+          return {
+            ...post,
+            ...action.updates
+          };
+        } else {
+          return post;
+        }
+    });
     case DELETE_POST:
       return state.filter(post => post.id !== action.id);
     default:

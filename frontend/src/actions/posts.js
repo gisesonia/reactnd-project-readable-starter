@@ -64,17 +64,29 @@ export const createPost = newpost => {
   };
 };
 
-export const editPost = (id, updates) => ({
+export const editPost = (params) => {
+  console.log(params)
+return{
+ 
   type: EDIT_POST,
-  id,
-  updates
-});
+  id: params.id,
+  updates: {...params}
+};
+
+}
 
 export const postEdit = (idpost, values) => {
-  console.log(idpost);
+  console.log("www",idpost);
+  console.log("www",values);
+  const updatepost = {
+      id: values.id,
+      title: values.title,
+      body: values.body
+  }
   return dispatch => {
-    return APIeditPost(idpost, values).then((idp, val) => {
-      dispatch(editPost(idp, val));
+    return APIeditPost(idpost, updatepost).then((post) => {
+      console.log(post.id)
+      dispatch(editPost(post))
     });
   };
 };
