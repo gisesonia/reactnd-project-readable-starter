@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { delpost } from "../actions/posts";
+import { delpost} from "../actions/posts";
 import Post from "./Post";
 import { MdAssignment } from "react-icons/md";
 
@@ -25,6 +25,7 @@ class Dashboard extends Component {
     };
   }
 
+  
   handleOptionChange = option => {
     this.setState({ option });
   };
@@ -76,7 +77,6 @@ class Dashboard extends Component {
                     {category[key].name}
                   </option>
                 );
-                //console.log(category[key].name);
               })
             )}
           </select>
@@ -86,7 +86,7 @@ class Dashboard extends Component {
             //console.log(post);
             return (
               <li key={index}>
-                <Post post={post} />
+                <Post post={post} onVote={this.handleVote}/>
                 <div className="buttons">
                   <button
                     className="btn leia"
@@ -131,16 +131,13 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ posts, categories }, props) {
-  //console.log(Object.values(posts))
   return {
     posts: Object.values(posts),
     categories: Object.values(categories)
   };
 }
 const mapDispatchToProps = dispatch => {
-  return {
-    //upVote: (id) => dispatch(upVotePostAction(id)),
-    //downVote: (id) => dispatch(downVotePostAction(id)),
+  return {   
     deletePost: id => dispatch(delpost(id))
   };
 };

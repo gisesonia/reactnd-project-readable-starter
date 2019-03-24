@@ -3,6 +3,7 @@ import { ADD_POST } from "../actions/posts";
 import { EDIT_POST } from "../actions/posts";
 import { DELETE_POST } from "../actions/posts";
 import { FETCH_POST } from "../actions/posts";
+import { VOTE_POST } from "../actions/posts";
 
 export default function posts(state = [], action) {
   switch (action.type) {
@@ -23,6 +24,11 @@ export default function posts(state = [], action) {
     });
     case DELETE_POST:
       return state.filter(post => post.id !== action.id);
+    case VOTE_POST:
+      return {
+        ...state,     
+        [action.id]: action.voteScore
+      };
     default:
       return state;
   }

@@ -12,16 +12,13 @@ const getPosts = () =>
     method: "GET"
   }).then(response => {
     return response.data;
-    //console.log(response.data)
   });
 
 export const APIfetchPost = id => {
-  //console.log("fetchId: ", id);
   return axios({
     url: `${API_URL}/posts/${id}`,
     method: "GET"
   }).then(response => {
-    //console.log(">>>", response.data);
     return response.data;
   });
 };
@@ -31,7 +28,6 @@ export const fetchCategories = () => {
     url: `${API_URL}/categories`,
     method: "GET"
   }).then(response => {
-    //console.log(response.data);
     return response.data;
   });
 };
@@ -60,7 +56,6 @@ export const APIfetchComments = postId => {
     url: `${API_URL}/posts/${postId}/comments`,
     method: "GET"
   }).then(response => {
-    //console.log(response.data);
     return response.data;
   });
 };
@@ -70,7 +65,6 @@ export const APIfetchComment = commentId => {
     url: `${API_URL}/comments/${commentId}`,
     method: "GET"
   }).then(response => {
-    //console.log(response.data);
     return response.data;
   });
 };
@@ -85,4 +79,18 @@ export const APIeditPost = (id, values) => {
     return response.data;
   });
 };
+
+export const APIvotePost = (id, vote) => {
+  return axios({
+    url:`${API_URL}/posts/${id}`,
+    method: 'POST',   
+    data: ({ option: vote })
+  }).then(response => {
+    console.log(response)
+   return response.data
+  })
+};
+
+
+
 export default getPosts;

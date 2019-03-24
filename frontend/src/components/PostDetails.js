@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleComments } from "../actions/comments";
-import { loadpost } from "../actions/posts";
+import { loadpost} from "../actions/posts";
 import { MdAssignment } from "react-icons/md";
 import Post from "./Post";
 
@@ -14,15 +14,15 @@ class PostDetails extends Component {
 
   render() {
     const { post } = this.props;
-    //console.log(post[0])
-    //console.log(this.props.post);
     return (
       <React.Fragment>
         <div className="pageTitle">
           <h1>Post</h1>
           <MdAssignment className="icon-post" />
         </div>
-        <div className="postlist">{post && <Post post={post} />}</div>
+        <div className="postlist">
+          {post && <Post post={post}  />}
+        </div>
       </React.Fragment>
     );
   }

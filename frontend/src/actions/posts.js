@@ -1,10 +1,11 @@
 import { v4 } from "uuid";
-import {  APIaddposts,  APIdelPosts,  APIfetchPost, APIeditPost } from "../api";
+import {  APIaddposts,  APIdelPosts,  APIfetchPost, APIeditPost, APIvotePost } from "../api";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const ADD_POST = "ADD_POST";
 export const EDIT_POST = "EDIT_POST";
 export const DELETE_POST = "DELETE_POST";
 export const FETCH_POST = "FETCH_POST";
+export const VOTE_POST = "VOTE_POST";
 export const FETCH_COMMENT = "FETCH_COMMENT";
 export const FETCH_COMMENTS = "FETCH_COMMENTS";
 
@@ -51,7 +52,6 @@ export const addPost = newpost => ({
 });
 
 export const createPost = newpost => {
-  //console.log(newpost)
   const post = {
     id: v4(),
     timestamp: Date.now(),
@@ -65,9 +65,7 @@ export const createPost = newpost => {
 };
 
 export const editPost = (params) => {
-  console.log(params)
-return{
- 
+return{ 
   type: EDIT_POST,
   id: params.id,
   updates: {...params}
@@ -76,17 +74,30 @@ return{
 }
 
 export const postEdit = (idpost, values) => {
-  console.log("www",idpost);
-  console.log("www",values);
   const updatepost = {
       id: values.id,
       title: values.title,
       body: values.body
   }
   return dispatch => {
-    return APIeditPost(idpost, updatepost).then((post) => {
-      console.log(post.id)
-      dispatch(editPost(post))
+    return APIeditPost(idpost, updatepost).then((idp,upost) => {
+      dispatch(editPost(idp,upost))
     });
   };
+};
+
+const votePost = (voteScore) => {
+  return {
+    type: VOTE_POST,
+    voteScore
+  }
+}
+
+export const voteScorePost = (id, vote) => {
+  console.log(id)
+ return dispatch => {
+   return APIvotePost(id,vote).then((vt)=>{
+    dispatch(votePost(vt));
+   })
+ }    
 };
