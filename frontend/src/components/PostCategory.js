@@ -5,6 +5,7 @@ import { MdAssignment } from "react-icons/md";
 import Post from "./Post";
 
 const PostCategory = props => {
+  console.log(props.postinfo)
   return (
     <React.Fragment>
       <div className="pageTitle">
@@ -12,25 +13,26 @@ const PostCategory = props => {
         <MdAssignment className="icon-post" />
       </div>
       <div className="postlist">
-        <Post post={props.post} />
+      {props.post.map((post, index) => {
+        return(
+          <li key={index}>
+           <Post post={post} />
+          </li>
+        )       
+      })
+    }
       </div>
     </React.Fragment>
   );
 };
 
-const mapStateToProps = ({ categories, posts }, ownProps) => {
-  const filteredposts = Object.values(posts).map(post => {
-    return post;
-  });
+const mapStateToProps = ({  posts }, ownProps) => {
+  const filteredposts = Object.values(posts)
   const postinfo = filteredposts.filter(el => {
-    console.log(el.category + "hfhfh");
-    return el.category === ownProps.match.params.path;
+    return el.category === ownProps.match.params.category;
   });
-  console.log(ownProps);
-  console.log(postinfo);
   return {
-    post: postinfo,
-    categories: Object.values(categories)
+    post: postinfo
   };
 };
 

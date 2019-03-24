@@ -32,7 +32,7 @@ class Dashboard extends Component {
   onCategoryChange = e => {
     const category = e.target.value;
     this.setState(() => ({ category }));
-    this.props.history.push("/category");
+    this.props.history.push(`/${category}`);
   };
 
   onDelete = id => {

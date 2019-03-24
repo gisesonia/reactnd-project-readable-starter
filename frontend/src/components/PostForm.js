@@ -33,7 +33,6 @@ class PostForm extends Component {
   onDescriptionChange = e => {
     const body = e.target.value;
     this.setState(() => ({ body }));
-    //console.log(body);
   };
 
   onSubmit = e => {
@@ -45,10 +44,6 @@ class PostForm extends Component {
       }));
     } else {
       this.setState(() => ({ error: "" }));
-      //console.log(this.state.category);
-      //console.log(this.state.title);
-      //console.log(this.state.author);
-      //console.log(this.state.body);
       this.props.onSubmit({
         title: this.state.title,
         body: this.state.body,
@@ -82,7 +77,6 @@ class PostForm extends Component {
                       {category[key].name}
                     </option>
                   );
-                  //console.log(category[key].name);
                 })
               )}
             </select>

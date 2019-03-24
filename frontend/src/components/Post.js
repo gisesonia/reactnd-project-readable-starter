@@ -4,21 +4,22 @@ import { MdThumbDown } from "react-icons/md";
 import { MdThumbUp } from "react-icons/md";
 
 const Post = ({ post }) => {
+  console.log(post.body)
   return (
     <div>
       {post === null ? (
         <p>Este post não existe</p>
       ) : (
         <div className="post">
-          <div className="post-info">
+          <div className="post-info">   
             <p>
-              <span className="titulo">Título</span> -{" "}
-              <span className="txtitulo">{post.title}</span>
-            </p>
-            <p>
-              <span className="titulo">Autor</span> -{" "}
-              <span className="txtitulo">{post.author}</span>
-            </p>
+            <span className="titulo">Título -</span> 
+              <span className="txtitulo">{post.title}</span>  
+              </p>       
+              <p><span className="titulo">Autor -</span>
+              <span className="txtitulo">{post.author}</span></p>      
+              <p> <span className="titulo">Descrição -</span>
+              <span className="txtitulo">{post.body}</span></p>             
           </div>
           <div className="post-icons">
             <p className="votos">
