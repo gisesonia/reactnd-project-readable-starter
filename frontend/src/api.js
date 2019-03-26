@@ -51,11 +51,12 @@ export const APIdelPosts = id => {
   });
 };
 
-export const APIfetchComments = postId => {
+export const APIfetchComments = postid => {
   return axios({
-    url: `${API_URL}/posts/${postId}/comments`,
+    url: `${API_URL}/posts/${postid}/comments`,
     method: "GET"
   }).then(response => {
+    console.log(response.data)
     return response.data;
   });
 };

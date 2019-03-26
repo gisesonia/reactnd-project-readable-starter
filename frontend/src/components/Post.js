@@ -6,7 +6,7 @@ import { voteScorePost } from "../actions/posts";
 
 const Post = (props) => { 
   const { post }= props
- console.log(props)
+ //console.log(props)
   return (
     <div>
       {post === null ? (

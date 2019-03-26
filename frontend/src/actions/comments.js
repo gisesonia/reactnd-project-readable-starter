@@ -8,9 +8,9 @@ export function receiveComments(comments) {
   };
 }
 
-export function handleComments() {
+export function handleComments(idpost) {
   return dispatch => {
-    return APIfetchComments().then(comment =>
+    return APIfetchComments(idpost).then(comment =>
       dispatch(receiveComments(comment))
     );
   };
