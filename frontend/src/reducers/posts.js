@@ -6,7 +6,6 @@ import { FETCH_POST } from "../actions/posts";
 import { VOTE_POST } from "../actions/posts";
 
 export default function posts(state = [], action) {
-  const { post } = action;
   switch (action.type) {
     case RECEIVE_POSTS:
       return action.posts;
