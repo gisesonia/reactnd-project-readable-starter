@@ -86,7 +86,24 @@ export const postEdit = (idpost, values) => {
   };
 };
 
-const votePost = (voteScore) => {
+const votePost = ({ id, voteScore }) => {
+  return {
+    type: VOTE_POST,
+    id,
+    voteScore
+  };
+};
+
+export const voteScorePost = (id, vote) => {
+  //console.log(id);
+  return dispatch => {
+    return APIvotePost(id, vote).then((id, vtp) => {
+      dispatch(votePost(id, vtp));
+    });
+  };
+};
+
+/* const votePost = (voteScore) => {
   return {
     type: VOTE_POST,
     voteScore
@@ -101,3 +118,4 @@ export const voteScorePost = (id, vote) => {
    })
  }    
 };
+ */

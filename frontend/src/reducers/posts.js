@@ -26,8 +26,11 @@ export default function posts(state = [], action) {
       return state.filter(post => post.id !== action.id);
     case VOTE_POST:
       return {
-        ...state,     
-        [action.id]: action.voteScore
+        ...state.post,
+        [action.id]: {
+          ...state.post[action.id],
+          voteScore: action.voteScore
+        }
       };
     default:
       return state;

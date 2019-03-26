@@ -4,9 +4,9 @@ import { MdThumbDown } from "react-icons/md";
 import { MdThumbUp } from "react-icons/md";
 import { voteScorePost } from "../actions/posts";
 
-const Post = ({post}) => { 
-  
-  //console.log(props)
+const Post = (props) => { 
+  const { post }= props
+ console.log(props)
   return (
     <div>
       {post === null ? (
@@ -27,8 +27,8 @@ const Post = ({post}) => {
             <p className="votos">
               Votos: {post.voteScore}{" "}
               <span>
-                <MdThumbDown className="downvote" onClick={() => voteScorePost(post.id,'downVote')} />
-                <MdThumbUp className="upvote" onClick={() => voteScorePost(post.id,'upVote')} />
+                <MdThumbDown className="downvote" onClick={() => props.onVote(post.id,'downVote')} />
+                <MdThumbUp className="upvote" onClick={() =>  props.onVote(post.id,'upVote')} />
               </span>
             </p>
             <p className="comments">Comentários: {post.commentCount}</p>
@@ -39,4 +39,4 @@ const Post = ({post}) => {
   );
 };
 
-export default connect(null, voteScorePost)(Post);
+export default connect(null, { onVote: voteScorePost })(Post);
