@@ -6,6 +6,7 @@ import { FETCH_POST } from "../actions/posts";
 import { VOTE_POST } from "../actions/posts";
 
 export default function posts(state = [], action) {
+  const { post } = action;
   switch (action.type) {
     case RECEIVE_POSTS:
       return action.posts;
@@ -25,13 +26,16 @@ export default function posts(state = [], action) {
     case DELETE_POST:
       return state.filter(post => post.id !== action.id);
     case VOTE_POST:
-      return {
-        ...state.post,
-        [action.id]: {
-          ...state.post[action.id],
-          voteScore: action.voteScore
-        }
-      };
+    return state.map(post => {
+      if (post.id === action.id) {
+        return {
+          ...post,
+          voteScore:action.voteScore
+        };
+      } else {
+        return post;
+      }
+  });
     default:
       return state;
   }

@@ -87,6 +87,7 @@ export const postEdit = (idpost, values) => {
 };
 
 const votePost = ({ id, voteScore }) => {
+  console.log(id)
   return {
     type: VOTE_POST,
     id,
