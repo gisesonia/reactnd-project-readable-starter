@@ -172,7 +172,7 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 .nav li:first-child {
@@ -190,7 +190,7 @@ li {
 }
 
 .navigation li a {
-  color: #ffffff
+  color: #ffffff;
 }
 
 .post {
@@ -224,6 +224,13 @@ span.titulo {
   color: #000000;
 }
 
+.datahora {
+  font-size: 11px;
+  color: #0f0f0f;
+  justify-content: flex-end;
+  margin-left: 10px;
+}
+
 .post-icons {
   font-size: 1rem;
   display: flex;
@@ -236,7 +243,7 @@ span.titulo {
   background: transparent;
   margin: 0;
   padding: 0;
-  color: #00b5d6;
+  color: #096272;
   cursor: pointer;
 }
 
@@ -260,6 +267,19 @@ span.titulo {
   display: flex;
   flex-direction: column;
 }
+
+.comment {
+  width: 100%;
+  max-width: 590px;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px 0 rgba(175, 175, 175, 0.2),
+    0 3px 6px 0 rgba(0, 0, 0, 0.19);
+  background-color: #7bb4ff;
+  justify-content: space-between;
+}
+
 .formulario {
   display: flex;
   flex-direction: column;
