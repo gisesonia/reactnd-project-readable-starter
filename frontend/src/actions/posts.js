@@ -6,8 +6,7 @@ export const EDIT_POST = "EDIT_POST";
 export const DELETE_POST = "DELETE_POST";
 export const FETCH_POST = "FETCH_POST";
 export const VOTE_POST = "VOTE_POST";
-export const FETCH_COMMENT = "FETCH_COMMENT";
-export const FETCH_COMMENTS = "FETCH_COMMENTS";
+
 
 export function receivePosts(posts) {
   return {

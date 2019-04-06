@@ -92,6 +92,23 @@ export const APIvotePost = (id, vote) => {
   })
 };
 
+export const APIaddcomments = (commentId, postid) => {
+  return axios({
+    url: `${API_URL}/comments/${commentId}`,
+    method: "POST"
+  }).then(response => {
+    return response.data;
+  });
+};
 
+export const APIeditComment = (id, values) => {
+  return axios({
+    url: `${API_URL}/comments/${id}`,
+    method: "PUT",
+    data: { ...values }
+  }).then(response => {
+    return response.data;
+  });
+};
 
 export default getPosts;

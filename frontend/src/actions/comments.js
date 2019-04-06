@@ -1,5 +1,12 @@
-import {  APIfetchComments } from "../api";
+import { v4 } from "uuid";
+import {  APIfetchComments, APIfetchComment, APIaddcomments,  APIeditComment } from "../api";
+
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
+export const FETCH_COMMENT = "RECEIVE_COMMENT";
+export const ADD_COMMENT = "ADD_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
+export const VOTE_COMMENTS = "VOTE_COMMENTS";
 
 export function receiveComments(comments) {
   return {
@@ -15,3 +22,57 @@ export function handleComments(idpost) {
     );
   };
 }
+
+export function fetchComment(comment) {
+  return {
+    type: FETCH_COMMENT,
+    comment
+  };
+}
+
+export const loadcomment = idcomment => {
+  return dispatch => {
+    return APIfetchComment(idcomment).then(idc => {
+      dispatch(fetchComment(idc));
+    });
+  };
+};
+
+export const addComment = (newcomment, postid) => ({
+  type: ADD_COMMENT,
+  newcomment,
+  postid
+});
+
+export const createComment = newcomment => {
+  const postid = newcomment.parentId;
+  const comment = {
+    id: v4(),
+    timestamp: Date.now(),
+    ...newcomment
+  };
+  return dispatch => {
+    return APIaddcomments(comment, postid).then((com, pid) => {
+      console.log(com,pid)
+      dispatch(addComment(com, pid));
+    });
+  };
+};
+
+export const editComment = params => {
+  //console.log(params);
+  return {
+    type: EDIT_COMMENT,
+    id: params.id,
+    updates: { ...params }
+  };
+};
+
+export const commentEdit = (idcomment, values) => {
+  return dispatch => {
+    return APIeditComment(idcomment, values).then(comment => {
+      console.log(comment);
+      dispatch(editComment(comment));
+    });
+  };
+};
