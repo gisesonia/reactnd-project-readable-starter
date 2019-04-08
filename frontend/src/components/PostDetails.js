@@ -37,7 +37,7 @@ class PostDetails extends Component {
                   <button
                     className="btn leia"
                     onClick={() => {                    
-                      console.log(this.props.history.push(`/addcomments`));
+                      this.props.history.push(`/comments`);
                     }}
                   >
                     Adiciona
@@ -70,7 +70,7 @@ class PostDetails extends Component {
   }
 }
 const mapStateToProps = (state, props) => {
-  console.log(state);
+  console.log(props);
   return {
     post: state.post,
     comments: Object.values(state.comments)
