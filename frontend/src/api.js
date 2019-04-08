@@ -92,7 +92,7 @@ export const APIvotePost = (id, vote) => {
   })
 };
 
-export const APIaddcomments = (commentId, postid) => {
+export const APIaddcomments = (commentId) => {
   return axios({
     url: `${API_URL}/comments/${commentId}`,
     method: "POST"

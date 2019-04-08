@@ -8,12 +8,14 @@ import Comment from "./Comment"
 
 class PostDetails extends Component {
   componentDidMount() {
+    console.log(this.props.match.params)
     //console.log(this.props.params.postId)
     this.props.loadPost(this.props.match.params.postId);
     this.props.loadComments(this.props.match.params.postId);
   }
 
   render() {
+      console.log(this.props)
     const { post,comments } = this.props;
     return (
       <React.Fragment>
@@ -34,8 +36,8 @@ class PostDetails extends Component {
                 <div className="buttons">
                   <button
                     className="btn leia"
-                    onClick={() => {
-                      this.props.history.push(`/addcomments`);
+                    onClick={() => {                    
+                      console.log(this.props.history.push(`/addcomments`));
                     }}
                   >
                     Adiciona

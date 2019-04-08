@@ -20,14 +20,14 @@ const EditComment = props => {
   );
 };
 
-/* const mapStateToProps = (state, props) => {
-console.log(">>>>" + state)
+const mapStateToProps = (state, props) => {
   //console.log(state.comments.find(comment => comment.id === props.match.params.commentId));
   return {
     commentFiltered: state.comments.find(
       comment => comment.id === props.match.params.commentId
     )
   };
-}; */
+};
 
-export default connect()(EditComment);
+export default connect(mapStateToProps)(EditComment);
+

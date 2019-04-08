@@ -35,7 +35,7 @@ class App extends Component {
                 <Route exact path="/:category" component={PostCategory} />
                 <Route path="/:category/:postId" component={PostDetails} />
                 <Route path="/addcomment" component={AddComment} />
-                <Route path="/edit/:commentId" component={EditComment} />
+                <Route path="/:category/editComment/:commentId" component={EditComment} />
                 <Route component={Page404} />
               </Switch>
             </div>

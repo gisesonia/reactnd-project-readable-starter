@@ -38,29 +38,27 @@ export const loadcomment = idcomment => {
   };
 };
 
-export const addComment = (newcomment, postid) => ({
+export const addComment = (newcomment) => ({
   type: ADD_COMMENT,
-  newcomment,
-  postid
+  newcomment
 });
 
 export const createComment = newcomment => {
-  const postid = newcomment.parentId;
-  const comment = {
+   const comment = {
     id: v4(),
     timestamp: Date.now(),
+    parentId: newcomment.parentId,
     ...newcomment
   };
   return dispatch => {
-    return APIaddcomments(comment, postid).then((com, pid) => {
-      console.log(com,pid)
-      dispatch(addComment(com, pid));
+    return APIaddcomments(comment).then((com) => {
+      dispatch(addComment(com));
     });
   };
 };
 
 export const editComment = params => {
-  //console.log(params);
+  console.log(params);
   return {
     type: EDIT_COMMENT,
     id: params.id,

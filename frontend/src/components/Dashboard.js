@@ -90,8 +90,8 @@ class Dashboard extends Component {
                 <div className="buttons">
                   <button
                     className="btn leia"
-                    onClick={() => {
-                      this.props.history.push(`/posts/${post.id}`, {
+                    onClick={() => {                     
+                      this.props.history.push(`/${post.category}/${post.id}`, {
                         teste: post
                       });
                     }}
@@ -101,6 +101,7 @@ class Dashboard extends Component {
                   <button
                     className="btn editar"
                     onClick={() => {
+                      console.log(this.props.history)
                       this.props.history.push(
                         `/${post.category}/edit/${post.id}`,
                         {
