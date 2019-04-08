@@ -45,7 +45,7 @@ class PostDetails extends Component {
                   <button
                     className="btn editar"
                     onClick={() => {
-                      this.props.history.push(`/edit/${comment.id}`);
+                      this.props.history.push(`/${post.category}/editComment/${comment.id}`);
                     }}
                   >
                     Editar
