@@ -4,7 +4,7 @@ import CommentForm from "./CommentForm";
 import { createComment } from "../actions/comments";
 
 const AddComment = props => {
-  //console.log(props);
+  console.log(props);
   return (
     <div>
       <h1 className="pageTitle">Adiciona Comentários</h1>

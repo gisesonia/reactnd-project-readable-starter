@@ -27,7 +27,7 @@ class PostDetails extends Component {
           {post && <Post post={post}  />}
         </div>
         <div className="postlist">
-        <ul className="postlist">
+        <ul>
         {console.log(comments)}
           {comments.map((comment, index) => {           
             return (
@@ -37,7 +37,7 @@ class PostDetails extends Component {
                   <button
                     className="btn leia"
                     onClick={() => {                    
-                      this.props.history.push(`/comments`);
+                      this.props.history.push(`/${post.category}/${post.id}/comment`);
                     }}
                   >
                     Adiciona

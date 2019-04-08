@@ -38,10 +38,14 @@ export const loadcomment = idcomment => {
   };
 };
 
-export const addComment = (newcomment) => ({
-  type: ADD_COMMENT,
-  newcomment
-});
+export const addComment = (newcomment) => {
+  console.log(newcomment)
+  return {
+    type: ADD_COMMENT,
+    newcomment
+  };
+}
+
 
 export const createComment = newcomment => {
    const comment = {
