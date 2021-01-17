@@ -1,4 +1,4 @@
-##Projeto 2 - React da Udacity com API
+## Projeto 2 - React da Udacity com API
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
